@@ -25,4 +25,6 @@ if two salesman agreed to the deal, each of them gets a quarter of the money, an
 
 if all three salesman agreed, each of them gets a third of the money.
 
+if the price has reached 500 and no one has agreed to the offer, the buyer gives up and none of the salesman gets any money.
+
 the goal of each salesman is to maximise his profit over this repeating scenarios.

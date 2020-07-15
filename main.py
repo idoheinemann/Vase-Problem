@@ -77,9 +77,7 @@ def run_competition(bots: List[Type[Salesman]] = None, turns_per_match=100, max_
                 except BaseException as e:
                     print(f'{cls3.__name__} crushed: {e}')
                     break
-                if price > 10000:
-                    c1 = c2 = c3 = ACCEPT
-                if ACCEPT in [c1, c2, c3]:
+                if ACCEPT in [c1, c2, c3] or price > 500:
                     score1, score2, score3 = Salesman.full_price_to_profits(price, c1, c2, c3)
                     scores[cls1.__name__] += score1
                     scores[cls2.__name__] += score2

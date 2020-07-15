@@ -73,7 +73,9 @@ class Salesman(abc.ABC):
             return full_price // 4, full_price // 2, full_price // 4
         if first_action is DECLINE and seconds_action is ACCEPT and thirds_action is ACCEPT:
             return full_price // 2, full_price // 4, full_price // 4
-        return full_price // 3, full_price // 3, full_price // 3
+        if first_action is ACCEPT:
+            return full_price // 3, full_price // 3, full_price // 3
+        return 0, 0, 0
 
     @abc.abstractmethod
     def on_sold(self, full_price: int, my_action: SalesmanAction, seconds_action: SalesmanAction,

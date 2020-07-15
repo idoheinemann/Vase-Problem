@@ -12,10 +12,17 @@ def get_disable_prints():
     stdout, stderr = sys.stdout, sys.stderr
     count = [0]
 
+    class _EmptyOutputFile:
+        def write(self, *args, **kwargs):
+            pass
+
+        def flush(self, *args, **kwargs):
+            pass
+
     class __T:
         def __enter__(self):
-            sys.stdout, sys.stderr = None, None
-            sys.__stdout__, sys.__stderr__ = None, None
+            sys.stdout, sys.stderr = _EmptyOutputFile(), _EmptyOutputFile()
+            sys.__stdout__, sys.__stderr__ = _EmptyOutputFile(), _EmptyOutputFile()
             count[0] += 1
 
         def __exit__(self, exc_type, exc_val, exc_tb):
